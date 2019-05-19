@@ -5,20 +5,17 @@ import (
 	"log"
 	"net/http"
 	"path"
+	"os"
 )
 
 var (
 	// компилируем шаблоны, если не удалось, то выходим
 	template1 = template.Must(template.ParseFiles(path.Join("templates", "index.html")))
 )
-/*
-type Index struct{
-	Title string
-}
-*/
-
+           
 
 func main() {
+        log.SetOutput(os.Stdout)
 
 	// для отдачи сервером статичных файлов из папки static
 	fs := http.FileServer(http.Dir("./templates"))
